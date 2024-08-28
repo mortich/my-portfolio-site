@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мое Портфолио</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#portfolio">Портфолио</a></li>
+                <li><a href="#about">Обо Мне</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-section">
+        <h1>Привет! Я Твой Профессионал</h1>
+        <p>Добро пожаловать в мое портфолио!</p>
+    </section>
+
+    <section id="portfolio">
+        <h2>Мое Портфолио</h2>
+        <table class="portfolio-table">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Название</th>
+                    <th>Описание</th>
+                    <th>Изображение</th>
+                </tr>
+            </thead>
+            <tbody id="gallery"></tbody>
+        </table>
+    </section>
+
+    <section id="about" class="about-section">
+        <h2>Обо Мне</h2>
+        <div class="about-content">
+            <img src="images/profile.jpg" alt="Фото профиля" class="profile-image">
+            <p>Привет! Меня зовут Станислав. Мне 18 лет, я студент 3 курса Железнодорожного университета и выпускник академии ITStep. Я увлечён IT и дизайном, и стремлюсь к созданию инновационных решений в этой сфере. Мой опыт охватывает различные области, и я всегда открыт к новым проектам и вызовам. Давайте работать вместе, чтобы воплотить ваши идеи в реальность!</p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Контакты</h2>
+        <div class="contact-content">
+            <ul class="contact-info">
+                <li>Email: <a href="mailto:stanislavpolivoda112@gmail.com">stanislavpolivoda112@gmail.com</a></li>
+                <li>Телефон: <a href="tel:+380951236078">+380951236078</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Мое Портфолио. Все права защищены.</p>
+    </footer>
+
+    <div id="fullscreenModal" class="fullscreen-modal">
+        <img id="fullscreenImage" src="" alt="Fullsize Image">
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -45,6 +45,7 @@ body {
 .fullscreen-modal .close:hover {
     color: #ff6347;
 }
+
 /* Навигационная панель */
 nav {
     background-color: #1d2a7a;
@@ -94,13 +95,13 @@ nav a.active {
 
 /* Секция hero */
 .hero-section {
-    background-image: url('../images/header-bg.jpg');
     background-size: cover;
     background-position: center;
     color: #fff;
     padding: 80px 20px;
     text-align: center;
     border-bottom: 5px solid #fff;
+    transition: background 0.5s ease;
 }
 
 .hero-section h1 {

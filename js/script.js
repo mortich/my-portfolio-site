@@ -1,68 +1,68 @@
-// Инициализация EmailJS с вашим Public Key
-emailjs.init("y_rUUBsS3veGzVgOc");
+document.addEventListener('DOMContentLoaded', () => {
+    const portfolioTable = document.querySelector('.portfolio-table');
 
-// Обработка формы и отправка данных через EmailJS
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contactForm');
-
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        // Отправка данных через EmailJS
-        emailjs.send("service_8qu8pwr", "template_s7pdz5a", {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            details: document.getElementById('details').value,
-            amount: document.getElementById('amount').value
-        }).then(function(response) {
-            // Успешная отправка
-            alert("Ваш заказ был отправлен!");
-            form.reset();
-        }).catch(function(error) {
-            // Ошибка отправки
-            console.error("Ошибка отправки:", error); // Выводим ошибку в консоль для отладки
-            alert("Не удалось отправить заказ. Попробуйте снова."); // Выводим сообщение об ошибке
-        });
-    });
-
-    // Данные для портфолио
-    const data = [
-        {"filename": "photo1.jpg", "appName": "WEB-дизайнерство", "description": "Государственный Заказ: Проект Безопасность"},
-        {"filename": "photo2.jpg", "appName": "WEB-дизайнерство", "description": "Семейные Узы: Эскиз для Majestic RP"},
-        {"filename": "photo3.jpg", "appName": "WEB-дизайнерство", "description": "YouTube Превью: Дизайн, Который Притягивает Внимание"}
+    // Примеры данных проекта
+    const projects = [
+        {
+            number: 1,
+            title: 'Проект 1',
+            image: 'images/photo1.jpg'
+        },
+        {
+            number: 2,
+            title: 'Проект 2',
+            image: 'images/photo2.jpg'
+        },
+        {
+            number: 3,
+            title: 'Проект 3',
+            image: 'images/photo3.jpg'
+        },
+        // Добавьте больше проектов по необходимости
     ];
 
-    const gallery = document.getElementById('gallery');
-
-    // Создание строк таблицы
-    data.forEach((item, index) => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${String(index + 1).padStart(3, '0')}</td>
-            <td>${item.appName}</td>
-            <td>${item.description}</td>
-            <td><img src="images/${item.filename}" alt="${item.appName}" data-fullsize="images/${item.filename}"></td>
+    projects.forEach(project => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${project.number}</td>
+            <td>${project.title}</td>
+            <td><img src="${project.image}" alt="${project.title}"></td>
         `;
-        gallery.appendChild(tr);
+        portfolioTable.appendChild(row);
     });
 
-    // Обработчик клика для полноэкранного режима
-    document.querySelectorAll('.portfolio-table img').forEach(item => {
-        item.addEventListener('click', () => {
-            const fullsizeImage = item.getAttribute('data-fullsize');
-            const modal = document.getElementById('fullscreenModal');
-            const modalImage = document.getElementById('fullscreenImage');
+    // Обработка отправки формы
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
 
-            modalImage.src = fullsizeImage;
-            modal.classList.add('active');
-            modalImage.style.transform = 'scale(0.8)'; // Начальное значение для анимации
-            setTimeout(() => modalImage.style.transform = 'scale(1)', 10); // Плавная анимация
+        fetch('https://api.emailjs.com/api/v1.0/email/send', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer y_rUUBsS3veGzVgOc'
+            },
+            body: JSON.stringify({
+                service_id: 'service_8qu8pwr',
+                template_id: 'template_s7pdz5a',
+                user_id: 'y_rUUBsS3veGzVgOc',  // Обновлено на public_key
+                template_params: {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    message: formData.get('message')
+                }
+            })
+        }).then(response => {
+            if (response.ok) {
+                alert('Ваше сообщение отправлено!');
+                form.reset();
+            } else {
+                alert('Не удалось отправить сообщение. Попробуйте снова.');
+            }
+        }).catch(error => {
+            console.error('Ошибка:', error);
+            alert('Не удалось отправить сообщение. Попробуйте снова.');
         });
-    });
-
-    // Закрытие модального окна при клике
-    document.getElementById('fullscreenModal').addEventListener('click', () => {
-        document.getElementById('fullscreenModal').classList.remove('active');
-        document.getElementById('fullscreenImage').style.transform = 'scale(0.8)';
     });
 });

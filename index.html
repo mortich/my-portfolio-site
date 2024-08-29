@@ -1,63 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мое Портфолио</title>
+    <title>Ваш Портфолио</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <!-- Навигационная панель -->
-    <header>
-        <h1>Привет! Я Твой Профессионал</h1>
-        <button id="orderButton">Сделать заказ</button>
-    </header>
+    <nav>
+        <ul>
+            <li><a href="#home" class="active">Главная</a></li>
+            <li><a href="#about">Обо мне</a></li>
+            <li><a href="#portfolio">Портфолио</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </nav>
 
-    <!-- Раздел портфолио -->
-    <section id="portfolio">
-        <h2>Мои работы</h2>
+    <!-- Секция hero -->
+    <section class="hero-section" id="home">
+        <h1>Добро пожаловать!</h1>
+        <p>Меня зовут Станислав, я профессиональный веб-разработчик с опытом работы в создании современных и стильных веб-сайтов. Моя цель – создавать уникальные и эффективные решения для клиентов.</p>
+    </section>
+
+    <!-- Секция обо мне -->
+    <section class="about-section" id="about">
+        <div class="about-content">
+            <img src="images/profile.jpg" alt="Profile" class="profile-image">
+            <p>Здесь будет информация обо мне и моей деятельности.</p>
+        </div>
+    </section>
+
+    <!-- Секция портфолио -->
+    <section class="portfolio-section" id="portfolio">
+        <h2 class="portfolio-title">Мое Портфолио</h2>
         <table class="portfolio-table">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>Номер проекта</th>
                     <th>Название</th>
-                    <th>Описание</th>
                     <th>Изображение</th>
                 </tr>
             </thead>
-            <tbody id="gallery">
-                <!-- Строки будут добавлены с помощью JavaScript -->
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Проект 1</td>
+                    <td><img src="images/photo1.jpg" alt="Проект 1"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Проект 2</td>
+                    <td><img src="images/photo2.jpg" alt="Проект 2"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Проект 3</td>
+                    <td><img src="images/photo3.jpg" alt="Проект 2"></td>
+                </tr>
+                <!-- Добавьте сюда другие проекты -->
             </tbody>
         </table>
     </section>
 
-    <!-- Модальное окно для полноэкранного просмотра изображений -->
-    <div id="fullscreenModal" class="fullscreen-modal">
-        <span class="close">&times;</span>
-        <img id="fullscreenImage" class="fullscreen-image">
-    </div>
-
-    <!-- Форма для отправки сообщений -->
-    <section id="contact">
-        <h2>Связаться со мной</h2>
-        <form id="contactForm" class="contact-form">
-            <label for="name">Ваше имя:</label>
-            <input type="text" id="name" required>
-
-            <label for="email">Ваш Email:</label>
-            <input type="email" id="email" required>
-
-            <label for="details">Детали заказа:</label>
-            <textarea id="details" required></textarea>
-
-            <label for="amount">Сумма, которую вы готовы заплатить:</label>
-            <input type="number" id="amount" required>
-
-            <button type="submit">Отправить заказ</button>
+    <!-- Секция контакты -->
+    <section class="contact-section" id="contact">
+        <h2>Свяжитесь со мной</h2>
+        <form class="contact-form" id="contact-form">
+            <input type="text" name="name" placeholder="Ваше имя" required>
+            <input type="email" name="email" placeholder="Ваш email" required>
+            <textarea name="message" rows="5" placeholder="Ваше сообщение" required></textarea>
+            <button type="submit">Отправить</button>
         </form>
     </section>
 
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <!-- Футер -->
+    <footer>
+        <p>&copy; 2024 Ваше Имя. Все права защищены.</p>
+    </footer>
+
+    <!-- Подключение JavaScript -->
     <script src="js/scripts.js"></script>
 </body>
 </html>

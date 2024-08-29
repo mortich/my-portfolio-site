@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }).then(function(response) {
             alert("Ваш заказ был отправлен!");
             form.reset();
-        }, function(error) {
+        }).catch(function(error) {
+            console.error("Ошибка отправки:", error); // Выводим ошибку в консоль для отладки
             alert("Не удалось отправить заказ. Попробуйте снова.");
         });
     });
@@ -37,28 +38,30 @@ document.addEventListener('DOMContentLoaded', function() {
             <td>${String(index + 1).padStart(3, '0')}</td>
             <td>${item.appName}</td>
             <td>${item.description}</td>
-            <td><img src="images/${item.filename}" alt="${item.appName}" data-fullsize="images/${item.filename}"></td>
+            <td><img src="images/${item.filename}" class="thumbnail" alt="${item.appName}" /></td>
         `;
         gallery.appendChild(tr);
     });
 
-    // Обработчик клика для полноэкранного режима
-    document.querySelectorAll('.portfolio-table img').forEach(item => {
-        item.addEventListener('click', () => {
-            const fullsizeImage = item.getAttribute('data-fullsize');
-            const modal = document.getElementById('fullscreenModal');
-            const modalImage = document.getElementById('fullscreenImage');
+    // Полноэкранное модальное окно
+    const modal = document.getElementById('fullscreenModal');
+    const modalImage = document.getElementById('fullscreenImage');
+    const closeModal = document.querySelector('.fullscreen-modal .close');
 
-            modalImage.src = fullsizeImage;
+    gallery.addEventListener('click', function(event) {
+        if (event.target.classList.contains('thumbnail')) {
             modal.classList.add('active');
-            modalImage.style.transform = 'scale(0.8)'; // Начальное значение для анимации
-            setTimeout(() => modalImage.style.transform = 'scale(1)', 10); // Плавная анимация
-        });
+            modalImage.src = event.target.src;
+        }
     });
 
-    // Закрытие модального окна при клике
-    document.getElementById('fullscreenModal').addEventListener('click', () => {
-        document.getElementById('fullscreenModal').classList.remove('active');
-        document.getElementById('fullscreenImage').style.transform = 'scale(0.8)';
+    closeModal.addEventListener('click', function() {
+        modal.classList.remove('active');
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.classList.remove('active');
+        }
     });
 });

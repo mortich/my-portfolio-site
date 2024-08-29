@@ -1,9 +1,10 @@
 // Инициализация EmailJS с вашим Public Key
-emailjs.init("y_rUUBsS3veGzVgOc"); // Замените YOUR_PUBLIC_KEY на ваш реальный Public Key
+emailjs.init("y_rUUBsS3veGzVgOc"); // Замените на ваш реальный Public Key
 
 // Обработка формы и отправка данных через EmailJS
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
+
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 

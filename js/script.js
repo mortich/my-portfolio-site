@@ -1,5 +1,5 @@
 // Инициализация EmailJS с вашим Public Key
-emailjs.init("y_rUUBsS3veGzVgOc"); // Замените на ваш реальный Public Key
+emailjs.init("y_rUUBsS3veGzVgOc");
 
 // Обработка формы и отправка данных через EmailJS
 document.addEventListener('DOMContentLoaded', function() {
@@ -8,17 +8,20 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 
+        // Отправка данных через EmailJS
         emailjs.send("service_8qu8pwr", "template_s7pdz5a", {
             name: document.getElementById('name').value,
             email: document.getElementById('email').value,
             details: document.getElementById('details').value,
             amount: document.getElementById('amount').value
         }).then(function(response) {
+            // Успешная отправка
             alert("Ваш заказ был отправлен!");
             form.reset();
         }).catch(function(error) {
+            // Ошибка отправки
             console.error("Ошибка отправки:", error); // Выводим ошибку в консоль для отладки
-            alert("Не удалось отправить заказ. Попробуйте снова.");
+            alert("Не удалось отправить заказ. Попробуйте снова."); // Выводим сообщение об ошибке
         });
     });
 
@@ -38,30 +41,28 @@ document.addEventListener('DOMContentLoaded', function() {
             <td>${String(index + 1).padStart(3, '0')}</td>
             <td>${item.appName}</td>
             <td>${item.description}</td>
-            <td><img src="images/${item.filename}" class="thumbnail" alt="${item.appName}" /></td>
+            <td><img src="images/${item.filename}" alt="${item.appName}" data-fullsize="images/${item.filename}"></td>
         `;
         gallery.appendChild(tr);
     });
 
-    // Полноэкранное модальное окно
-    const modal = document.getElementById('fullscreenModal');
-    const modalImage = document.getElementById('fullscreenImage');
-    const closeModal = document.querySelector('.fullscreen-modal .close');
+    // Обработчик клика для полноэкранного режима
+    document.querySelectorAll('.portfolio-table img').forEach(item => {
+        item.addEventListener('click', () => {
+            const fullsizeImage = item.getAttribute('data-fullsize');
+            const modal = document.getElementById('fullscreenModal');
+            const modalImage = document.getElementById('fullscreenImage');
 
-    gallery.addEventListener('click', function(event) {
-        if (event.target.classList.contains('thumbnail')) {
+            modalImage.src = fullsizeImage;
             modal.classList.add('active');
-            modalImage.src = event.target.src;
-        }
+            modalImage.style.transform = 'scale(0.8)'; // Начальное значение для анимации
+            setTimeout(() => modalImage.style.transform = 'scale(1)', 10); // Плавная анимация
+        });
     });
 
-    closeModal.addEventListener('click', function() {
-        modal.classList.remove('active');
-    });
-
-    window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            modal.classList.remove('active');
-        }
+    // Закрытие модального окна при клике
+    document.getElementById('fullscreenModal').addEventListener('click', () => {
+        document.getElementById('fullscreenModal').classList.remove('active');
+        document.getElementById('fullscreenImage').style.transform = 'scale(0.8)';
     });
 });

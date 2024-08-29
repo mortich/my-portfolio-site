@@ -54,11 +54,11 @@
     <section id="contact" class="contact-section">
         <h2>Контакты</h2>
         <div class="contact-content">
-            <form class="contact-form">
-                <input type="text" placeholder="Ваше имя:" required>
-                <input type="email" placeholder="Ваш Email:" required>
-                <textarea placeholder="Детали заказа:" required></textarea>
-                <input type="text" placeholder="Сумма, которую вы готовы заплатить:" required>
+            <form class="contact-form" action="mailto:stanislavpolivoda112@gmail.com" method="post" enctype="text/plain">
+                <input type="text" name="name" placeholder="Ваше имя:" required>
+                <input type="email" name="email" placeholder="Ваш Email:" required>
+                <textarea name="details" placeholder="Детали заказа:" required></textarea>
+                <input type="text" name="amount" placeholder="Сумма, которую вы готовы заплатить:" required>
                 <button type="submit">Отправить заказ</button>
             </form>
         </div>
@@ -67,5 +67,7 @@
     <footer>
         &copy; 2024 Мое Портфолио. Все права защищены.
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -7,69 +7,57 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Навигация -->
     <nav>
         <ul>
-            <li><a href="#home" class="active">Главная</a></li>
-            <li><a href="#about">Обо Мне</a></li>
+            <li><a href="#home">Главная</a></li>
             <li><a href="#portfolio">Портфолио</a></li>
             <li><a href="#contact">Контакты</a></li>
         </ul>
     </nav>
 
+    <!-- Секция hero -->
     <section id="home" class="hero-section">
         <h1>Привет! Я Твой Профессионал</h1>
         <p>Добро пожаловать в мое портфолио!</p>
-        <a href="#contact" class="order-button">Сделать заказ</a>
     </section>
 
-    <section id="about" class="about-section">
-        <img src="images/profile.jpg" alt="Profile" class="profile-image">
-        <div class="about-content">
-            <h2>Обо Мне</h2>
-            <p>Я разработчик с опытом работы в создании веб-сайтов и Discord-ботов. Мои навыки включают HTML, CSS, JavaScript и Python.</p>
-        </div>
-    </section>
-
+    <!-- Секция портфолио -->
     <section id="portfolio" class="portfolio-section">
-        <h2 class="portfolio-title">Мои Работы</h2>
-        <table class="portfolio-table">
-            <thead>
-                <tr>
-                    <th>Номер</th>
-                    <th>Название</th>
-                    <th>Описание</th>
-                    <th>Изображение</th>
-                </tr>
-            </thead>
-            <tbody id="gallery">
-                <!-- Здесь будут добавляться строки таблицы с помощью JavaScript -->
-            </tbody>
+        <h2>Мои работы</h2>
+        <table class="portfolio-table" id="gallery">
+            <!-- Таблица будет заполнена через script.js -->
         </table>
     </section>
 
+    <!-- Секция контакты -->
     <section id="contact" class="contact-section">
         <h2>Контакты</h2>
         <div class="contact-content">
-            <form class="contact-form" action="mailto:stanislavpolivoda112@gmail.com" method="post" enctype="text/plain">
-                <input type="text" name="name" placeholder="Ваше имя:" required>
-                <input type="email" name="email" placeholder="Ваш Email:" required>
-                <textarea name="details" placeholder="Детали заказа:" required></textarea>
-                <input type="text" name="amount" placeholder="Сумма, которую вы готовы заплатить:" required>
+            <form id="contactForm">
+                <label for="name">Ваше имя:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Ваш Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="details">Детали заказа:</label>
+                <textarea id="details" name="details" required></textarea>
+
+                <label for="amount">Сумма, которую вы готовы заплатить:</label>
+                <input type="number" id="amount" name="amount" required>
+
                 <button type="submit">Отправить заказ</button>
             </form>
         </div>
     </section>
 
-    <footer>
-        &copy; 2024 Мое Портфолио. Все права защищены.
-    </footer>
-
-    <!-- Модальное окно для полноэкранного просмотра -->
+    <!-- Модальное окно для изображений -->
     <div id="fullscreenModal" class="fullscreen-modal">
-        <span class="close">&times;</span>
-        <img id="fullscreenImage" class="fullscreen-image" src="">
+        <img id="fullscreenImage" src="" alt="Полноэкранное изображение">
     </div>
 
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,4 +1,26 @@
+// Инициализация EmailJS с вашим Public Key
+emailjs.init("y_rUUBsS3veGzVgOc"); // Замените YOUR_PUBLIC_KEY на ваш реальный Public Key
+
+// Обработка формы и отправка данных через EmailJS
 document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        emailjs.send("service_8qu8pwr", "template_s7pdz5a", {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            details: document.getElementById('details').value,
+            amount: document.getElementById('amount').value
+        }).then(function(response) {
+            alert("Ваш заказ был отправлен!");
+            form.reset();
+        }, function(error) {
+            alert("Не удалось отправить заказ. Попробуйте снова.");
+        });
+    });
+
+    // Данные для портфолио
     const data = [
         {"filename": "photo1.jpg", "appName": "WEB-дизайнерство", "description": "Государственный Заказ: Проект Безопасность"},
         {"filename": "photo2.jpg", "appName": "WEB-дизайнерство", "description": "Семейные Узы: Эскиз для Majestic RP"},
@@ -35,11 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Закрытие модального окна при клике
     document.getElementById('fullscreenModal').addEventListener('click', () => {
-        document.getElementById('fullscreenModal').classList.remove('active');
-        document.getElementById('fullscreenImage').style.transform = 'scale(0.8)';
-    });
-
-    document.querySelector('.fullscreen-modal .close').addEventListener('click', () => {
         document.getElementById('fullscreenModal').classList.remove('active');
         document.getElementById('fullscreenImage').style.transform = 'scale(0.8)';
     });

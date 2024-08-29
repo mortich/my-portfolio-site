@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     color: #333;
-    background: linear-gradient(to bottom, #a0c4ff, #b9fbc0);
+    background: linear-gradient(to right, #a0c4ff, #b9fbc0); /* Градиентный фон */
 }
 
 /* Навигационная панель */
@@ -37,12 +37,14 @@ nav a {
     padding: 10px 20px;
     border-radius: 25px;
     background: linear-gradient(135deg, #ff7e5f, #feb47b);
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    text-align: center;
 }
 
 nav a:hover {
     background: linear-gradient(135deg, #feb47b, #ff7e5f);
-    transform: scale(1.1);
+    transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -65,14 +67,14 @@ nav a.active {
 }
 
 .hero-section h1 {
-    font-size: 3.5em;
+    font-size: 3em;
     margin: 0;
     font-weight: 700;
     animation: fadeIn 2s ease-out;
 }
 
 .hero-section p {
-    font-size: 1.8em;
+    font-size: 1.5em;
     margin: 20px 0 0;
     font-weight: 300;
 }
@@ -85,14 +87,30 @@ nav a.active {
 
 /* Секция обо мне */
 .about-section {
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4); /* Градиентный фон */
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     padding: 60px 20px;
     color: #fff;
     text-align: center;
-    border-radius: 15px;
-    margin: 40px auto;
-    max-width: 1000px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.about-content {
+    position: relative;
+    z-index: 2;
 }
 
 .profile-image {
@@ -120,38 +138,35 @@ nav a.active {
 
 /* Секция портфолио */
 .portfolio-section {
-    padding: 60px 20px;
-    background: #f0f4f8;
-    text-align: center;
+    padding: 40px 20px;
+    background: #fff;
 }
 
 .portfolio-title {
-    font-size: 2.5em;
-    margin-bottom: 40px;
-    color: #333;
-    font-weight: 700;
-    position: relative;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .portfolio-table {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     border-collapse: separate;
     border-spacing: 0 10px;
-    background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .portfolio-table th, .portfolio-table td {
     padding: 20px;
     border: none;
-    text-align: left;
 }
 
 .portfolio-table th {
     background-color: #4a90e2;
     color: #fff;
+    text-align: left;
 }
 
 .portfolio-table tr {
@@ -181,8 +196,10 @@ nav a.active {
     font-size: 1.2em;
     color: #fff;
     background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    border: none;
     border-radius: 25px;
     text-decoration: none;
+    text-align: center;
     transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 

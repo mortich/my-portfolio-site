@@ -1,250 +1,73 @@
-/* Общие стили */
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    background: linear-gradient(to bottom, #a0c4ff, #b9fbc0);
-}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мое Портфолио</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home" class="active">Главная</a></li>
+            <li><a href="#about">Обо Мне</a></li>
+            <li><a href="#portfolio">Портфолио</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </nav>
 
-/* Навигационная панель */
-nav {
-    background-color: #1d2a7a;
-    padding: 15px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 2px solid #fff;
-}
+    <section id="home" class="hero-section">
+        <h1>Привет! Я Твой Профессионал</h1>
+        <p>Добро пожаловать в мое портфолио!</p>
+        <a href="#contact" class="order-button">Сделать заказ</a>
+    </section>
 
-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+    <section id="about" class="about-section">
+        <img src="images/profile.jpg" alt="Profile" class="profile-image">
+        <div class="about-content">
+            <h2>Обо Мне</h2>
+            <p>Я разработчик с опытом работы в создании веб-сайтов и Discord-ботов. Мои навыки включают HTML, CSS, JavaScript и Python.</p>
+        </div>
+    </section>
 
-nav ul li {
-    margin: 0 15px;
-}
+    <section id="portfolio" class="portfolio-section">
+        <h2 class="portfolio-title">Мои Работы</h2>
+        <table class="portfolio-table">
+            <tr>
+                <th>Проект</th>
+                <th>Описание</th>
+                <th>Изображение</th>
+            </tr>
+            <tr>
+                <td>Пример Сайта</td>
+                <td>Сайт, разработанный с использованием HTML, CSS и JavaScript. Это простой, но стильный веб-сайт, который демонстрирует мои навыки фронтенд-разработки.</td>
+                <td><img src="images/website.jpg" alt="Website"></td>
+            </tr>
+            <tr>
+                <td>Discord Бот</td>
+                <td>Этот бот создан для приветствия новых участников сервера и отправки уведомлений. Написан на Python с использованием библиотеки Discord.py.</td>
+                <td><img src="images/discord-bot.jpg" alt="Discord Bot"></td>
+            </tr>
+        </table>
+    </section>
 
-nav a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.2em;
-    font-weight: 500;
-    padding: 10px 20px;
-    border-radius: 25px;
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
-    transition: all 0.3s ease;
-}
+    <section id="contact" class="contact-section">
+        <h2>Контакты</h2>
+        <div class="contact-content">
+            <form class="contact-form" action="mailto:stanislavpolivoda112@gmail.com" method="post" enctype="text/plain">
+                <input type="text" name="name" placeholder="Ваше имя:" required>
+                <input type="email" name="email" placeholder="Ваш Email:" required>
+                <textarea name="details" placeholder="Детали заказа:" required></textarea>
+                <input type="text" name="amount" placeholder="Сумма, которую вы готовы заплатить:" required>
+                <button type="submit">Отправить заказ</button>
+            </form>
+        </div>
+    </section>
 
-nav a:hover {
-    background: linear-gradient(135deg, #feb47b, #ff7e5f);
-    transform: scale(1.1);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
+    <footer>
+        &copy; 2024 Мое Портфолио. Все права защищены.
+    </footer>
 
-nav a.active {
-    background: #fff;
-    color: #1d2a7a;
-    font-weight: 700;
-}
-
-/* Секция hero */
-.hero-section {
-    background-image: url('images/header-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-    padding: 80px 20px;
-    text-align: center;
-    position: relative;
-    border-bottom: 5px solid #fff;
-}
-
-.hero-section h1 {
-    font-size: 3.5em;
-    margin: 0;
-    font-weight: 700;
-    animation: fadeIn 2s ease-out;
-}
-
-.hero-section p {
-    font-size: 1.8em;
-    margin: 20px 0 0;
-    font-weight: 300;
-}
-
-/* Эффект плавного появления текста */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Секция обо мне */
-.about-section {
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-    padding: 60px 20px;
-    color: #fff;
-    text-align: center;
-    border-radius: 15px;
-    margin: 40px auto;
-    max-width: 1000px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.profile-image {
-    border-radius: 50%;
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    margin-bottom: 20px;
-    border: 5px solid #fff;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.profile-image:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-}
-
-.about-content p {
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.8;
-    font-size: 1.2em;
-}
-
-/* Секция портфолио */
-.portfolio-section {
-    padding: 60px 20px;
-    background: #f0f4f8;
-    text-align: center;
-}
-
-.portfolio-title {
-    font-size: 2.5em;
-    margin-bottom: 40px;
-    color: #333;
-    font-weight: 700;
-    position: relative;
-}
-
-.portfolio-table {
-    width: 80%;
-    margin: 0 auto;
-    border-collapse: separate;
-    border-spacing: 0 10px;
-    background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.portfolio-table th, .portfolio-table td {
-    padding: 20px;
-    border: none;
-    text-align: left;
-}
-
-.portfolio-table th {
-    background-color: #4a90e2;
-    color: #fff;
-}
-
-.portfolio-table tr {
-    transition: background 0.3s ease;
-}
-
-.portfolio-table tr:hover {
-    background: #eaf3ff;
-}
-
-.portfolio-table img {
-    width: 120px;
-    height: auto;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-.portfolio-table img:hover {
-    transform: scale(1.1);
-}
-
-/* Кнопка заказа */
-.order-button {
-    display: inline-block;
-    margin: 40px auto;
-    padding: 15px 30px;
-    font-size: 1.2em;
-    color: #fff;
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
-    border-radius: 25px;
-    text-decoration: none;
-    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.order-button:hover {
-    background: linear-gradient(135deg, #feb47b, #ff7e5f);
-    transform: scale(1.1);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Секция контакты */
-.contact-section {
-    background: linear-gradient(135deg, #dbe2ef, #ffe2e2);
-    padding: 60px 20px;
-    color: #333;
-    text-align: center;
-    border-radius: 15px;
-    margin: 40px auto;
-    max-width: 800px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.contact-form input, .contact-form textarea {
-    width: 100%;
-    max-width: 500px;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-}
-
-.contact-form button {
-    padding: 10px 20px;
-    font-size: 1.2em;
-    color: #fff;
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.contact-form button:hover {
-    background: linear-gradient(135deg, #feb47b, #ff7e5f);
-    transform: scale(1.1);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Футер */
-footer {
-    background-color: #1d2a7a;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    font-size: 0.9em;
-}
+    <script src="script.js"></script>
+</body>
+</html>

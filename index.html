@@ -4,42 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мое Портфолио</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <h1>Привет! Я Твой Профессионал</h1>
-            <p>Добро пожаловать в мое портфолио!</p>
-            <button onclick="document.getElementById('order-form').scrollIntoView()">Сделать заказ</button>
-        </div>
-    </header>
-    <section class="portfolio">
-        <h2>Мои работы</h2>
-        <div class="project">
-            <img src="https://via.placeholder.com/400x200.png?text=Проект+Сайт" alt="Сайт">
-            <h3>Пример Сайта</h3>
-            <p>Сайт, разработанный с использованием HTML, CSS и JavaScript. Это простой, но стильный веб-сайт, который демонстрирует мои навыки фронтенд-разработки.</p>
-        </div>
-        <div class="project">
-            <img src="https://via.placeholder.com/400x200.png?text=Discord+Бот" alt="Discord Бот">
-            <h3>Пример Discord Бота</h3>
-            <p>Этот бот создан для приветствия новых участников сервера и отправки уведомлений. Написан на Python с использованием библиотеки Discord.py.</p>
+    <nav>
+        <ul>
+            <li><a href="#home" class="active">Главная</a></li>
+            <li><a href="#about">Обо Мне</a></li>
+            <li><a href="#portfolio">Портфолио</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <h1>Привет! Я Твой Профессионал</h1>
+        <p>Добро пожаловать в мое портфолио!</p>
+        <a href="#contact" class="order-button">Сделать заказ</a>
+    </section>
+
+    <section id="about" class="about-section">
+        <img src="images/profile.jpg" alt="Profile" class="profile-image">
+        <div class="about-content">
+            <h2>Обо Мне</h2>
+            <p>Я разработчик с опытом работы в создании веб-сайтов и Discord-ботов. Мои навыки включают HTML, CSS, JavaScript и Python.</p>
         </div>
     </section>
-    <section id="order-form">
-        <h2>Сделать заказ</h2>
-        <form action="mailto:stanislavpolivoda112@gmail.com" method="post" enctype="text/plain">
-            <label for="name">Ваше имя:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
-            <label for="email">Ваш Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
-            <label for="details">Детали заказа:</label><br>
-            <textarea id="details" name="details" rows="4" required></textarea><br><br>
-            <label for="price">Сумма, которую вы готовы заплатить:</label><br>
-            <input type="number" id="price" name="price" required><br><br>
-            <button type="submit">Отправить заказ</button>
-        </form>
+
+    <section id="portfolio" class="portfolio-section">
+        <h2 class="portfolio-title">Мои Работы</h2>
+        <table class="portfolio-table">
+            <tr>
+                <th>Проект</th>
+                <th>Описание</th>
+                <th>Изображение</th>
+            </tr>
+            <tr>
+                <td>Пример Сайта</td>
+                <td>Сайт, разработанный с использованием HTML, CSS и JavaScript. Это простой, но стильный веб-сайт, который демонстрирует мои навыки фронтенд-разработки.</td>
+                <td><img src="images/website.jpg" alt="Website"></td>
+            </tr>
+            <tr>
+                <td>Discord Бот</td>
+                <td>Этот бот создан для приветствия новых участников сервера и отправки уведомлений. Написан на Python с использованием библиотеки Discord.py.</td>
+                <td><img src="images/discord-bot.jpg" alt="Discord Bot"></td>
+            </tr>
+        </table>
     </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Контакты</h2>
+        <div class="contact-content">
+            <form class="contact-form">
+                <input type="text" placeholder="Ваше имя:" required>
+                <input type="email" placeholder="Ваш Email:" required>
+                <textarea placeholder="Детали заказа:" required></textarea>
+                <input type="text" placeholder="Сумма, которую вы готовы заплатить:" required>
+                <button type="submit">Отправить заказ</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2024 Мое Портфолио. Все права защищены.
+    </footer>
 </body>
 </html>

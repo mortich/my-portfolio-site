@@ -38,4 +38,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('fullscreenModal').classList.remove('active');
         document.getElementById('fullscreenImage').style.transform = 'scale(0.8)';
     });
+
+    document.querySelector('.fullscreen-modal .close').addEventListener('click', () => {
+        document.getElementById('fullscreenModal').classList.remove('active');
+        document.getElementById('fullscreenImage').style.transform = 'scale(0.8)';
+    });
 });

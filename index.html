@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мое Портфолио</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <nav>
@@ -33,21 +33,17 @@
     <section id="portfolio" class="portfolio-section">
         <h2 class="portfolio-title">Мои Работы</h2>
         <table class="portfolio-table">
-            <tr>
-                <th>Проект</th>
-                <th>Описание</th>
-                <th>Изображение</th>
-            </tr>
-            <tr>
-                <td>Пример Сайта</td>
-                <td>Сайт, разработанный с использованием HTML, CSS и JavaScript. Это простой, но стильный веб-сайт, который демонстрирует мои навыки фронтенд-разработки.</td>
-                <td><img src="images/website.jpg" alt="Website"></td>
-            </tr>
-            <tr>
-                <td>Discord Бот</td>
-                <td>Этот бот создан для приветствия новых участников сервера и отправки уведомлений. Написан на Python с использованием библиотеки Discord.py.</td>
-                <td><img src="images/discord-bot.jpg" alt="Discord Bot"></td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Номер</th>
+                    <th>Название</th>
+                    <th>Описание</th>
+                    <th>Изображение</th>
+                </tr>
+            </thead>
+            <tbody id="gallery">
+                <!-- Здесь будут добавляться строки таблицы с помощью JavaScript -->
+            </tbody>
         </table>
     </section>
 
@@ -68,6 +64,12 @@
         &copy; 2024 Мое Портфолио. Все права защищены.
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Модальное окно для полноэкранного просмотра -->
+    <div id="fullscreenModal" class="fullscreen-modal">
+        <span class="close">&times;</span>
+        <img id="fullscreenImage" class="fullscreen-image" src="">
+    </div>
+
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -5,7 +5,7 @@ body {
     padding: 0;
     color: #333;
     background: linear-gradient(to right, #a0c4ff, #b9fbc0); /* Градиентный фон */
-    transition: background 1s ease;
+    transition: background 0.5s ease;
 }
 
 /* Навигационная панель */
@@ -16,7 +16,7 @@ nav {
     top: 0;
     z-index: 1000;
     border-bottom: 2px solid #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
@@ -42,26 +42,6 @@ nav a {
     transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     display: inline-block;
     text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: #fff;
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-}
-
-nav a:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
 }
 
 nav a:hover {
@@ -82,42 +62,37 @@ nav a.active {
     background-size: cover;
     background-position: center;
     color: #fff;
-    padding: 80px 20px;
+    padding: 100px 20px;
     text-align: center;
     position: relative;
     border-bottom: 5px solid #fff;
-    animation: slideIn 1.5s ease-out;
+    animation: fadeInBackground 1.5s ease-out forwards;
 }
 
 .hero-section h1 {
     font-size: 3em;
     margin: 0;
     font-weight: 700;
-    animation: fadeIn 2s ease-out;
+    animation: fadeInText 2s ease-out;
 }
 
 .hero-section p {
     font-size: 1.5em;
     margin: 20px 0 0;
     font-weight: 300;
+    animation: fadeInText 2.5s ease-out;
 }
 
 /* Эффект плавного появления текста */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+@keyframes fadeInText {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Эффект плавного слайда для секции hero */
-@keyframes slideIn {
-    from {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+/* Эффект плавного появления фона */
+@keyframes fadeInBackground {
+    from { filter: blur(10px); }
+    to { filter: blur(0); }
 }
 
 /* Секция обо мне */
@@ -130,7 +105,6 @@ nav a.active {
     text-align: center;
     position: relative;
     overflow: hidden;
-    animation: fadeIn 2s ease-out;
 }
 
 .about-section::before {
@@ -142,18 +116,11 @@ nav a.active {
     height: 100%;
     background: rgba(0, 0, 0, 0.2);
     z-index: 1;
-    animation: pulse 3s infinite;
 }
 
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 0.9;
-    }
-    50% {
-        transform: scale(1.05);
-        opacity: 1;
-    }
+.about-content {
+    position: relative;
+    z-index: 2;
 }
 
 .profile-image {
@@ -177,25 +144,12 @@ nav a.active {
     margin: 0 auto;
     line-height: 1.8;
     font-size: 1.2em;
-    animation: fadeIn 2s ease-out;
 }
 
 /* Секция портфолио */
 .portfolio-section {
     padding: 40px 20px;
     background: #fff;
-    animation: fadeInUp 1.5s ease-out;
-}
-
-@keyframes fadeInUp {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
 }
 
 .portfolio-table {
@@ -206,7 +160,6 @@ nav a.active {
     background: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .portfolio-table th, .portfolio-table td {
@@ -232,12 +185,11 @@ nav a.active {
     width: 120px;
     height: auto;
     border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .portfolio-table img:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Секция контакты */
@@ -247,7 +199,6 @@ nav a.active {
     padding: 40px 20px;
     color: #333;
     text-align: center;
-    animation: fadeIn 2s ease-out;
 }
 
 .contact-content {
@@ -269,12 +220,11 @@ nav a.active {
     color: #4a90e2;
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 .contact-info a:hover {
     color: #ff6f61;
-    transform: scale(1.1);
 }
 
 /* Модальное окно для изображений */
